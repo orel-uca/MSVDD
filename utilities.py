@@ -34,6 +34,8 @@ def Kernel(a, b, kernel="linear", sigma=1, degree=2):
         return np.exp(-sq_dists / sigma)
     elif kernel == "polynomial":
         return (1 + np.dot(a, b.T)) ** degree
+    else:
+        raise ValueError(f"Kernel '{kernel}' unknown. Valid values are 'linear', 'rbf', 'polynomial'.")
 
 def predict_scores(sol, new_points):
     """
