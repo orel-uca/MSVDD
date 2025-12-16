@@ -91,7 +91,7 @@ def Primal_MSVDD(instance):
         sol = Solution(x, data, ntrain, nval, ntest, y, p, C, kernel, sigma, degree, None, model.Runtime, model.NodeCount, model.Fingerprint)
     
     else:
-        sol = Solution(x, data, ntrain, nval, ntest, y, p, C, kernel, sigma, degree, None, None, None, model.Fingerprint)
+        sol = Solution(x, data, ntrain, nval, ntest, y, p, C, kernel, sigma, degree, None, -1.0, -1.0, model.Fingerprint)
 
     return sol
 
@@ -180,6 +180,6 @@ def Dualized_MSVDD(instance):
         sol = Solution(x, data, ntrain, nval, ntest, y, p, C, kernel, sigma, degree, None, model.Runtime, model.NodeCount, model.Fingerprint)
     
     else:
-        sol = Solution(x, data, ntrain, nval, ntest, y, p, C, kernel, sigma, degree, None, None, None, model.Fingerprint)
+        sol = Solution(x, data, ntrain, nval, ntest, y, p, C, kernel, sigma, degree, None, -1.0, -1.0, model.Fingerprint)
 
     return sol

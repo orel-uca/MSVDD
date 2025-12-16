@@ -764,13 +764,13 @@ def evaluate(Cs, sigmas, ks, reps, ntrain, ntest, nval, anom_frac, use_kernel, d
                         output_sufix = output_DorP.split('_')[-1]
                         
                         if not sol.obj:
-                            status = "   Tolerance error"
-                            print(f'{DorP}   {output_sufix}   {ntrain:4d}    {anom_frac:4.2f}   {r:3d}  {k:3d}    {C:6.3f}    {sigma:6.3f}  {sol.runtime:7.1f}                              {status}', file=outfile)
+                            status = "             Error"
+                            print(f'{DorP}      {output_sufix}   {ntrain:4d}    {anom_frac:4.2f}   {r:3d}  {k:3d}    {C:6.3f}    {sigma:6.3f}  {sol.runtime:7.1f}                              {status}', file=outfile)
                         else:
                             vector_R_str = ", ".join([f"{R_val:9.6f}" for R_val in sol.R])
                             status = ""
                             sigmas_choosen = f"sigmas = {sigma_roc:.2f}   " if use_kernel else " "
-                            print(f'{DorP}   {output_sufix}   {ntrain:4d}    {anom_frac:4.2f}   {r:3d}  {k:3d}    {C:6.3f}    {sigma:6.3f}  {sol.runtime:7.1f}    {sol.obj:11.6f}   {sol.gap*100:7.3f}   {int(sol.nodes):8d}   {status}   [{vector_R_str:{10*max(ks)+2}s}]     {max_roc:5.6f}    {sigmas_choosen}', file=outfile)
+                            print(f'{DorP}      {output_sufix}   {ntrain:4d}    {anom_frac:4.2f}   {r:3d}  {k:3d}    {C:6.3f}    {sigma:6.3f}  {sol.runtime:7.1f}    {sol.obj:11.6f}   {sol.gap*100:7.3f}   {int(sol.nodes):8d}   {status}   [{vector_R_str:{10*max(ks)+2}s}]     {max_roc:5.6f}    {sigmas_choosen}', file=outfile)
 
 def metrics(res_filename, Cs, sigmas, ks, reps, ntrain, ntest, nval, anom_frac, use_kernel, show_plots, dir_data, data_DorP, output_DorP):
     """
@@ -818,7 +818,7 @@ def metrics(res_filename, Cs, sigmas, ks, reps, ntrain, ntest, nval, anom_frac, 
     rocs = np.zeros((len(reps), len(Cs), len(ks)))
     
     with open(f'{output_DorP}/summary_{DorP}.txt', 'a') as outfile:
-        print(f' Model    ntrain  %anom   rep   k       C       sigma     CPU          V.O.        GAP      Nodes         Radii {" "*(10*max(ks)+2)}  ROC      {sig_choos}', file=outfile)
+        print(f' Model    output    ntrain   %anom   rep   k       C       sigma     CPU          V.O.        GAP      Nodes         Radii {" "*(10*max(ks)+2)}  ROC      {sig_choos}', file=outfile)
                         
     for r in reps:
         # Load data
@@ -872,13 +872,13 @@ def metrics(res_filename, Cs, sigmas, ks, reps, ntrain, ntest, nval, anom_frac, 
                         output_sufix = output_DorP.split('_')[-1]
                             
                         if not sol.obj:
-                            status = "   Tolerance error"
-                            print(f'{DorP}   {output_sufix}   {ntrain:4d}    {anom_frac:4.2f}   {r:3d}  {k:3d}    {C:6.3f}    {sigma:6.3f}  {sol.runtime:7.1f}                              {status}', file=outfile)
+                            status = "             Error"
+                            print(f'{DorP}    {output_sufix:10s}   {ntrain:4d}    {anom_frac:4.2f}   {r:3d}  {k:3d}    {C:6.3f}    {sigma:6.3f}  {sol.runtime:7.1f}                              {status}', file=outfile)
                         else:
                             vector_R_str = ", ".join([f"{R_val:9.6f}" for R_val in sol.R])
                             status = ""
                             sigmas_choosen = f"sigmas = {sigma_roc:.2f}   " if use_kernel else " "
-                            print(f'{DorP}   {output_sufix}   {ntrain:4d}    {anom_frac:4.2f}   {r:3d}  {k:3d}    {C:6.3f}    {sigma:6.3f}  {sol.runtime:7.1f}    {sol.obj:11.6f}   {sol.gap*100:7.3f}   {int(sol.nodes):8d}   {status}   [{vector_R_str:{10*max(ks)+2}s}]     {max_roc:5.6f}    {sigmas_choosen}', file=outfile)
+                            print(f'{DorP}    {output_sufix:10s}   {ntrain:4d}    {anom_frac:4.2f}   {r:3d}  {k:3d}    {C:6.3f}    {sigma:6.3f}  {sol.runtime:7.1f}    {sol.obj:11.6f}   {sol.gap*100:7.3f}   {int(sol.nodes):8d}   {status}   [{vector_R_str:{10*max(ks)+2}s}]     {max_roc:5.6f}    {sigmas_choosen}', file=outfile)
                     
                     ###############################################################
                     #                       Draw the results                      #
